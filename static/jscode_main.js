@@ -18,12 +18,8 @@ console.log("Started")
 const videoElement = document.getElementsByClassName('input_video')[0];
 const canvasElement = document.getElementsByClassName('output_canvas')[0];
 const frame = canvasElement.getContext('2d');
-// const drawingElement = document.getElementsByClassName('drawing_canvas')[0];
-// const drawing = drawingElement.getContext('2d');
-
-
-// canvasElement.height = videoElement.videoHeight;
-// canvasElement.width = videoElement.videoWidth;
+const drawingElement = document.getElementsByClassName('drawing_canvas')[0];
+const drawing = drawingElement.getContext('2d');
 
 // videoElement.msHorizontalMirror = false;
 // videoElement.classList.toggle('selfie', options.selfieMode);
@@ -43,12 +39,12 @@ transform: scale(-1, 1); filter: FlipH;";
 // transform: scale(-1, 1); filter: FlipH;";
 
 
-const imgHeight = 720; //videoElement.height;
-const imgWidth = 1280; //videoElement.width;
+const imgHeight = 480; //videoElement.height;
+const imgWidth = 640; //videoElement.width;
 
 const zValue = 500;
 
-let toChangeSize = true;
+
 let points;
 let freeHand=[];
 let startTime=0;
@@ -60,15 +56,6 @@ function dist(a, b){
 
 function onResults(results) {
   // frame.save();
-  if(toChangeSize && videoElement.videoWidth!=0 && videoElement.videoHeight!=0){
-    toChangeSize = false;
-    canvasElement.height = videoElement.videoHeight;
-    canvasElement.width = videoElement.videoWidth;
-
-  }
-  // canvasElement.height = videoElement.videoHeight;
-  // canvasElement.width = videoElement.videoWidth;
-
   points=[];
   frame.clearRect(0, 0, canvasElement.width, canvasElement.height);
   frame.drawImage(
@@ -154,7 +141,7 @@ const camera = new Camera(videoElement, {
   onFrame: async () => {
     await hands.send({image: videoElement});
   },
-  width: 1280,
-  height: 720
+  width: 640,
+  height: 480
 });
 camera.start();
