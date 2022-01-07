@@ -28,6 +28,13 @@
   }</style> -->
   <div class="container">
     <!-- <script src="jscode.js" type="module"></script> -->
+    <select id="facingModeVal">
+      <option value="environment">environment</option>
+      <option value="none" selected="selected">none</option>
+      <option value="user">user</option>
+      <option value="left">left</option>
+      <option value="right">right</option>
+    </select>
     <script src="{{url_for('static', filename='jscode.js')}}" type="module"></script>
     <video class="input_video"></video>
     <canvas class="output_canvas" width="640px" height="480px"></canvas>
