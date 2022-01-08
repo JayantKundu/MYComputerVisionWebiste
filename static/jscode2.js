@@ -15,6 +15,41 @@
 
 console.log("Started")
 
+const selectElement = document.getElementById("facingModeVal");
+let cameraVal = "none";
+
+
+// while(true){
+//   cameraVal = selectElement.value;
+//   if(cameraVal != "none") break;
+// }
+
+
+function waitForIt() {
+  console.log("Fucntion called");
+  cameraVal = selectElement.value;
+  if (cameraVal == "none") {
+  setTimeout(waitForIt,2500);
+  } else {
+      camera = new Camera(videoElement, {
+      onFrame: async () => {
+        await hands.send({image: videoElement});
+      },
+      facingMode: {exact: cameraVal},
+      width: 1280,
+      height: 720
+    });
+    camera.start();
+    console.log("camera started");
+    return;
+  }
+}
+
+waitForIt();
+
+console.log("Started 2");
+console.log(cameraVal);
+
 const videoElement = document.getElementsByClassName('input_video')[0];
 const canvasElement = document.getElementsByClassName('output_canvas')[0];
 const frame = canvasElement.getContext('2d');
@@ -149,13 +184,14 @@ hands.setOptions({
 hands.onResults(onResults);
 
 
+let camera;
 
-const camera = new Camera(videoElement, {
-  onFrame: async () => {
-    await hands.send({image: videoElement});
-  },
-  facingMode: "environmnet",
-  width: 1280,
-  height: 720
-});
-camera.start();
+// const camera = new Camera(videoElement, {
+//   onFrame: async () => {
+//     await hands.send({image: videoElement});
+//   },
+//   facingMode: cameraVal,
+//   width: 1280,
+//   height: 720
+// });
+// camera.start();

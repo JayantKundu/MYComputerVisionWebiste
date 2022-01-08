@@ -10,9 +10,13 @@ def starting():
 	# return "Welcome to my website"
 	return render_template("index.html")
 
-@app.route("/handTracking")
+@app.route("/handTracking1")
 def torch():
-	return render_template("handTracking.html")
+	return render_template("handTracking1.html")
+
+@app.route("/handTracking2")
+def torch():
+	return render_template("handTracking2.html")
 
 
 
