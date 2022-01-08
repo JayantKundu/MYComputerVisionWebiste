@@ -18,6 +18,8 @@ console.log("Started")
 const selectElement = document.getElementById("facingModeVal");
 let cameraVal = "none";
 
+const imgHeight = 480; //videoElement.height;
+const imgWidth = 640; //videoElement.width;
 
 // while(true){
 //   cameraVal = selectElement.value;
@@ -26,7 +28,7 @@ let cameraVal = "none";
 
 
 function waitForIt() {
-  console.log("Fucntion called");
+  console.log("Fucntion called changed");
   cameraVal = selectElement.value;
   if (cameraVal == "none") {
   setTimeout(waitForIt,2500);
@@ -35,9 +37,10 @@ function waitForIt() {
       onFrame: async () => {
         await hands.send({image: videoElement});
       },
-      facingMode: {exact: cameraVal},
-      width: 1280,
-      height: 720
+      // facingMode: {exact: cameraVal},
+      facingMode: cameraVal,
+      width: imgWidth,
+      height: imgHeight
     });
     camera.start();
     console.log("camera started");
@@ -77,9 +80,6 @@ transform: scale(-1, 1); filter: FlipH;";
 // -webkit-transform: scale(-1, 1); -o-transform: scale(-1, 1); \
 // transform: scale(-1, 1); filter: FlipH;";
 
-
-const imgHeight = 720; //videoElement.height;
-const imgWidth = 1280; //videoElement.width;
 
 const zValue = 500;
 
