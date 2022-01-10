@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script> -->
+
+ <!--  <script src="camera_utils.js" crossorigin="anonymous"></script>
+  <script src="control_utils.js" crossorigin="anonymous"></script>
+  <script src="drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="hands.js" crossorigin="anonymous"></script> -->
+
+  <script src="{{url_for('static', filename='camera_utils.js')}}" type="module"></script>
+  <script src="{{url_for('static', filename='control_utils.js')}}" type="module"></script>
+  <script src="{{url_for('static', filename='drawing_utils.js')}}" type="module"></script>
+  <script src="{{url_for('static', filename='hands.js')}}" type="module"></script>
+</head>
+<body>
+  <div id="container">
+    <button id="avgFPS">avgFPS</button>
+    <button id="flip_video">mirror video</button>
+    <button id="flip_frame">mirror frame</button>
+  </div>
+    <div class="select">
+        <label for="videoSource">Video source: </label><select id="videoSource"><option value="none" selected="selected">none</option></select>
+    </div>
+
+    <label for="video">Video</label><video id="video" width="640px" height="480px" autoplay></video>
+    <label for="output_canvas">Frame</label><canvas id="output_canvas" width="640px" height="480px"></canvas>
+
+
+  <!-- <script src="jscode.js" type="module"></script> -->
+  <script src="{{url_for('static', filename='jscode.js')}}" type="module"></script>
+  <label for="fps_canvas">FPS</label><canvas id="fps_canvas" width="100px" height="50px"></canvas>
+</body>
+</html>

@@ -10,6 +10,10 @@ def starting():
 	# return "Welcome to my website"
 	return render_template("index.html")
 
+@app.route("/handTracking")
+def torch():
+	return render_template("handTracking.html")
+
 @app.route("/handTracking1")
 def torch1():
 	return render_template("handTracking1.html")
@@ -22,4 +26,4 @@ def torch2():
 
 
 if __name__ == "__main__":
-	app.run()
+	app.run(port=8080)
