@@ -189,6 +189,8 @@ function handleError(error) {
 
 function gotDevices(deviceInfos) {
 // Handles being called several times to update labels. Preserve values.
+console.log("deviceInfos");
+console.log(deviceInfos);
 const values = selectors.map(select => select.value);
 
 for (let i = 0; i !== deviceInfos.length; ++i) {
