@@ -23,7 +23,13 @@ def torch2():
 	return render_template("handTracking2.html")
 
 
+@app.route("/camera")
+def checkCAmera():
+	return render_template("cameraCheck.html")
+
+
 
 
 if __name__ == "__main__":
-	app.run(port=8080)
+	# app.run(port=8080)
+	app.run()
